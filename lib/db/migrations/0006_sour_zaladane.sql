@@ -1,0 +1,1 @@
+ALTER TABLE "User" ADD COLUMN "isApproved" boolean DEFAULT false NOT NULL;

@@ -53,6 +53,9 @@ export const {
           const passwordsMatch = await compare(password, users[0].password!);
           if (!passwordsMatch) return null;
           
+          // Check if user is approved
+          if (!users[0].isApproved) return null;
+          
           return users[0] as any;
         } catch (error) {
           console.error('Authentication failed:', error);

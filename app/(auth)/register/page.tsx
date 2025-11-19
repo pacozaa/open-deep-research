@@ -31,9 +31,8 @@ export default function Page() {
     } else if (state.status === 'invalid_data') {
       toast.error('Failed validating your submission!');
     } else if (state.status === 'success') {
-      toast.success('Account created successfully');
+      toast.success('Account created successfully! Your account is pending approval.');
       setIsSuccessful(true);
-      router.refresh();
     }
   }, [state, router]);
 
@@ -49,6 +48,9 @@ export default function Page() {
           <h3 className="text-xl font-semibold dark:text-zinc-50">Sign Up</h3>
           <p className="text-sm text-gray-500 dark:text-zinc-400">
             Create an account with your email and password
+          </p>
+          <p className="text-xs text-gray-400 dark:text-zinc-500">
+            Your account will need to be approved by an administrator before you can sign in
           </p>
         </div>
         <AuthForm action={handleSubmit} defaultEmail={email}>
