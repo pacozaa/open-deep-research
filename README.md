@@ -26,6 +26,7 @@ Check out the demo [here](https://x.com/nickscamara_/status/1886459999905521912)
   - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
 - [NextAuth.js](https://github.com/nextauthjs/next-auth)
   - Simple and secure authentication
+  - User approval system for controlled access (see [User Approval Documentation](docs/USER_APPROVAL.md))
 
 ## Model Providers
 
@@ -76,6 +77,19 @@ pnpm dev
 
 Your app template should now be running on [localhost:3000](http://localhost:3000/).
 
+## User Approval System
+
+This application includes a user approval system to control access. New user registrations require administrator approval before they can sign in.
+
+**For Users:**
+- Register at `/register` to create an account
+- Your account will be pending approval
+- You'll receive an error message if you try to login before approval
+
+**For Administrators:**
+- See [User Approval Documentation](docs/USER_APPROVAL.md) for detailed instructions on managing user approvals
+- Use Drizzle Studio (`pnpm db:studio`) for easy GUI-based approval management
+- Or use SQL queries to approve users directly
 
 # Models dependencies
 

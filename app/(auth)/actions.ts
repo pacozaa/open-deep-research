@@ -12,7 +12,7 @@ const authFormSchema = z.object({
 });
 
 export interface LoginActionState {
-  status: 'idle' | 'in_progress' | 'success' | 'failed' | 'invalid_data';
+  status: 'idle' | 'in_progress' | 'success' | 'failed' | 'invalid_data' | 'user_not_approved';
 }
 
 export const login = async (
@@ -24,6 +24,12 @@ export const login = async (
       email: formData.get('email'),
       password: formData.get('password'),
     });
+
+    // Check if user exists and is approved before attempting sign in
+    const [user] = await getUser(validatedData.email);
+    if (user && !user.isApproved) {
+      return { status: 'user_not_approved' };
+    }
 
     await signIn('credentials', {
       email: validatedData.email,
@@ -67,11 +73,8 @@ export const register = async (
       return { status: 'user_exists' } as RegisterActionState;
     }
     await createUser(validatedData.email, validatedData.password);
-    await signIn('credentials', {
-      email: validatedData.email,
-      password: validatedData.password,
-      redirect: false,
-    });
+    
+    // Don't automatically sign in - user needs approval first
 
     return { status: 'success' };
   } catch (error) {

@@ -7,7 +7,6 @@ import { toast } from 'sonner';
 
 import { AuthForm } from '@/components/auth-form';
 import { SubmitButton } from '@/components/submit-button';
-import { Button } from '@/components/ui/button';
 
 import { login, type LoginActionState } from '../actions';
 
@@ -29,6 +28,8 @@ export default function Page() {
       toast.error('Invalid credentials!');
     } else if (state.status === 'invalid_data') {
       toast.error('Failed validating your submission!');
+    } else if (state.status === 'user_not_approved') {
+      toast.error('Your account is pending approval. Please wait for an administrator to approve your account.');
     } else if (state.status === 'success') {
       setIsSuccessful(true);
       router.refresh();
