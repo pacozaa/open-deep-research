@@ -11,11 +11,11 @@ type ReasoningModel = typeof VALID_REASONING_MODELS[number];
 const VALID_REASONING_MODELS = [
   'o1', 'o1-mini', 'o3-mini',
   'deepseek-ai/DeepSeek-R1',
-  'gpt-4o'
+  'gpt-4.1', 'gpt-5', 'gpt-5.1'
 ] as const;
 
 // Models that support JSON structured output
-const JSON_SUPPORTED_MODELS = ['gpt-4o', 'gpt-4o-mini'] as const;
+const JSON_SUPPORTED_MODELS = ['gpt-4.1', 'gpt-4.1-mini'] as const;
 
 // Helper to check if model supports JSON
 export const supportsJsonOutput = (modelId: string) =>

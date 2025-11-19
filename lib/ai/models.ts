@@ -9,15 +9,27 @@ export interface Model {
 
 export const models: Array<Model> = [
   {
-    id: 'gpt-4o',
-    label: 'GPT 4o',
-    apiIdentifier: 'gpt-4o',
+    id: 'gpt-4.1',
+    label: 'GPT 4.1',
+    apiIdentifier: 'gpt-4.1',
     description: 'For complex, multi-step tasks',
   },
   {
-    id: 'gpt-4o-mini',
-    label: 'GPT 4o Mini',
-    apiIdentifier: 'gpt-4o-mini',
+    id: 'gpt-4.1-mini',
+    label: 'GPT 4.1 Mini',
+    apiIdentifier: 'gpt-4.1-mini',
+    description: 'Affordable for complex, multi-step tasks',
+  },
+  {
+    id: 'gpt-5.1',
+    label: 'GPT 5.1',
+    apiIdentifier: 'gpt-5.1',
+    description: 'For complex, multi-step tasks',
+  },
+  {
+    id: 'gpt-5.1-mini',
+    label: 'GPT 5.1 Mini',
+    apiIdentifier: 'gpt-5.1-mini',
     description: 'Affordable for complex, multi-step tasks',
   }
 ] as const;
